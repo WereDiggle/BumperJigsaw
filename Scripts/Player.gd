@@ -1,6 +1,4 @@
-extends RigidBody2D
-
-export var puzzle_pos = Vector2(0,0)
+extends "res://Scripts/Piece.gd"
 
 # Declare member variables here. Examples:
 # var a = 2

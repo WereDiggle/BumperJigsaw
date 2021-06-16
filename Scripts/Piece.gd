@@ -1,7 +1,8 @@
 extends RigidBody2D
 
+const shader = preload("res://Materials/Piece.shader")
+
 onready var collision_shape = get_node("collision_shape")
-onready var image = get_node("image")
 
 const PIECE_SIZE = 100.0
 
@@ -19,6 +20,11 @@ func attach_to_player(player):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var mat = ShaderMaterial.new()
+	mat.set_shader(shader)
+	mat.set_shader_param("puzzle_pos", puzzle_pos)
+	mat.set_shader_param("puzzle_ratio", Vector2(0.5, 0.5))
+	get_node("image").set_material(mat)
 	pass # Replace with function body.
 
 
