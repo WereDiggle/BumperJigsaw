@@ -3,14 +3,17 @@
 [ext_resource path="res://Scripts/PieceFeeler.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 11.4186 )
+extents = Vector2( 7.20251, 9.59425 )
 
 [node name="Area2D2" type="Area2D"]
 rotation = 1.5708
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -53.0426 ]
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -61.042, 0.187317 )
+position = Vector2( -57.5724, 0.0263939 )
 shape = SubResource( 1 )
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
