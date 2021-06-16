@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+export var puzzle_pos = Vector2(0,0)
 
 # Declare member variables here. Examples:
 # var a = 2

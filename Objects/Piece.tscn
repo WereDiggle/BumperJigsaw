@@ -12,9 +12,11 @@ position = Vector2( 484.208, 288.826 )
 gravity_scale = 0.0
 linear_damp = 1.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_vertical_guides_": [ 434.353, 533.962 ]
+}
 
 [node name="image" type="Sprite" parent="."]
-rotation = 0.866654
 texture = ExtResource( 1 )
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
@@ -24,12 +26,16 @@ __meta__ = {
 }
 
 [node name="top_feeler" parent="." instance=ExtResource( 2 )]
+feeler_direction = Vector2( 0, -1 )
 
 [node name="bot_feeler" parent="." instance=ExtResource( 2 )]
 rotation = 4.71239
+feeler_direction = Vector2( 0, 1 )
 
 [node name="left_feeler" parent="." instance=ExtResource( 2 )]
 rotation = 0.0
+feeler_direction = Vector2( -1, 0 )
 
 [node name="right_feeler" parent="." instance=ExtResource( 2 )]
 rotation = 3.14159
+feeler_direction = Vector2( 1, 0 )

@@ -25,28 +25,34 @@ __meta__ = {
 
 [node name="Piece" parent="." instance=ExtResource( 2 )]
 position = Vector2( 701.997, 352.466 )
+puzzle_pos = Vector2( 1, 0 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Walls" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
 position = Vector2( 509.692, 0 )
 physics_material_override = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
 shape = SubResource( 1 )
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
 position = Vector2( 1025.21, 322.275 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
 shape = SubResource( 2 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
 position = Vector2( -0.458862, 318.56 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
 shape = SubResource( 3 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
 position = Vector2( 514.289, 600.776 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
 shape = SubResource( 4 )
