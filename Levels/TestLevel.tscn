@@ -23,9 +23,25 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
-[node name="Piece" parent="." instance=ExtResource( 2 )]
-position = Vector2( 701.997, 352.466 )
+[node name="left" parent="." instance=ExtResource( 2 )]
+position = Vector2( 239.971, 289.698 )
+puzzle_pos = Vector2( -1, 0 )
+
+[node name="bot" parent="." instance=ExtResource( 2 )]
+position = Vector2( 467.916, 463.843 )
+puzzle_pos = Vector2( 0, 1 )
+
+[node name="right" parent="." instance=ExtResource( 2 )]
+position = Vector2( 700.581, 289.698 )
 puzzle_pos = Vector2( 1, 0 )
+
+[node name="right2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 904.93, 284.035 )
+puzzle_pos = Vector2( 2, 0 )
+
+[node name="top" parent="." instance=ExtResource( 2 )]
+position = Vector2( 459.893, 103.283 )
+puzzle_pos = Vector2( 0, -1 )
 
 [node name="Walls" type="Node2D" parent="."]
 __meta__ = {

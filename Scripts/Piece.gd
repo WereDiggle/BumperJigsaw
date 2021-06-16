@@ -11,15 +11,11 @@ const PIECE_SIZE = 100.0
 export var puzzle_pos = Vector2(0,0)
 
 func attach_to_player(player):
-	remove_child(collision_shape)
-	remove_child(image)
-
-	var offset = puzzle_pos * PIECE_SIZE
-	collision_shape.position = offset
-	image.position = offset
-	player.add_child(collision_shape)
-	player.add_child(image)
-
+	for child in get_children():
+		remove_child(child)
+		var offset = puzzle_pos * PIECE_SIZE
+		child.position += offset
+		player.add_child(child)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
