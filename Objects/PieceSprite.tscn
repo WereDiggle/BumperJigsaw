@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Materials/Piece.shader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/blue = 1.0
+shader_param/puzzle_pos = Vector2( 0, 0 )
+shader_param/puzzle_ratio = Vector2( 1, 1 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/starry_night_full.jpg-709fd894fbd983089563cbdf96529a8f.stex"
+
+[node name="image" type="Sprite"]
+material = SubResource( 1 )
+position = Vector2( -0.0849512, 0.100053 )
+scale = Vector2( 0.0780977, 0.0980808 )
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -49.6202, 49.9209 ],
+"_edit_vertical_guides_": [ -50.1263, 49.9403 ]
+}

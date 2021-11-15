@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/PuzzleMaker.gd" type="Script" id=1]
+[ext_resource path="res://Assets/teal.png" type="Texture" id=2]
+
+[node name="PuzzleMaker" type="Node2D"]
+script = ExtResource( 1 )
+image = ExtResource( 2 )
+puzzle_width = 5
+puzzle_height = 5

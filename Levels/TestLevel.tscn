@@ -1,20 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Piece.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Materials/WallPhysicsMaterial.tres" type="PhysicsMaterial" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 509.24, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 333.692 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 10, 325.814 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 520.55, 10 )
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -22,45 +9,19 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+puzzle_size = Vector2( 2, 2 )
 
 [node name="bot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 467.916, 463.843 )
 puzzle_pos = Vector2( 0, 1 )
+puzzle_size = Vector2( 2, 2 )
 
 [node name="right" parent="." instance=ExtResource( 2 )]
-position = Vector2( 700.581, 289.698 )
+position = Vector2( 700.161, 289.698 )
 puzzle_pos = Vector2( 1, 0 )
+puzzle_size = Vector2( 2, 2 )
 
 [node name="right2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 703.141, 459.542 )
 puzzle_pos = Vector2( 1, 1 )
-
-[node name="Walls" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
-position = Vector2( 509.692, 0 )
-physics_material_override = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
-position = Vector2( 1025.21, 322.275 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
-shape = SubResource( 2 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
-position = Vector2( -0.458862, 318.56 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
-shape = SubResource( 3 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
-position = Vector2( 514.289, 600.776 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
-shape = SubResource( 4 )
+puzzle_size = Vector2( 2, 2 )

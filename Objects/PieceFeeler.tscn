@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/PieceFeeler.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.20251, 9.59425 )
+extents = Vector2( 7.20251, 15.585 )
 
 [node name="Area2D2" type="Area2D"]
 rotation = 1.5708
