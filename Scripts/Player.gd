@@ -19,6 +19,15 @@ func _ready():
 #func _process(delta):
 #	pass
 
+var click_loc = null
+
+func _input(event):
+	# Interestingly, on down click only fires one event
+	if event.is_action_pressed("select"):
+		click_loc = get_viewport().get_mouse_position()
+	elif event.is_action_released("select"):
+		click_loc = null
+
 func _physics_process(delta):
 	move()
 	spin()
@@ -41,8 +50,13 @@ func spin():
 	applied_torque = (direction * max_spin - angular_velocity * abs(direction)) * spin_force * bigness
 
 func move():
+
 	var direction = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).clamped(1)
+	if click_loc != null:
+		direction = (get_viewport().get_mouse_position() - click_loc).clamped(1)
+
+
 	var temp_force = direction * max_velocity
 	var force_dot = direction.dot(linear_velocity) * linear_velocity.normalized()
 	applied_force = (temp_force - force_dot) * move_force
