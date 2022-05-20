@@ -1,27 +1,24 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Objects/Piece.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/DoublePiece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/checkered_background.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-puzzle_size = Vector2( 2, 2 )
+[node name="CheckeredBackground" type="Sprite" parent="."]
+position = Vector2( 546, 318 )
+scale = Vector2( 1.46989, 1.46989 )
+z_index = -99
+texture = ExtResource( 3 )
 
-[node name="bot" parent="." instance=ExtResource( 2 )]
-position = Vector2( 467.916, 463.843 )
-puzzle_pos = Vector2( 0, 1 )
-puzzle_size = Vector2( 2, 2 )
+[node name="Piece2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 816, 263 )
 
-[node name="right" parent="." instance=ExtResource( 2 )]
-position = Vector2( 700.161, 289.698 )
-puzzle_pos = Vector2( 1, 0 )
-puzzle_size = Vector2( 2, 2 )
+[node name="Piece3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 545, 265 )
 
-[node name="right2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 703.141, 459.542 )
-puzzle_pos = Vector2( 1, 1 )
-puzzle_size = Vector2( 2, 2 )
+[node name="Piece" parent="." instance=ExtResource( 1 )]
+position = Vector2( 229, 225 )
