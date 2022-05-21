@@ -38,17 +38,15 @@ func _ready():
 	get_node("image").set_material(mat)
 	pass # Replace with function body.
 
-func make_draggable():
-	for child in get_children():
-		remove_child(child)
-		drag_double.add_child(child)
-	drag_double.transform = transform
-	drag_double.can_drag = true
-	
-
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		make_draggable()
+		# Make the piece able to drag
+		for child in get_children():
+			remove_child(child)
+			drag_double.add_child(child)
+		drag_double.transform = transform
+		drag_double.can_drag = true
+		drag_double.click_offset = get_global_mouse_position() - global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

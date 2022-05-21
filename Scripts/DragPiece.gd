@@ -47,6 +47,7 @@ func make_rigid():
 	rigid_double.transform = transform
 
 var can_drag = false;
+var click_offset = Vector2(0, 0)
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and not event.pressed:
@@ -56,7 +57,7 @@ func _input_event(viewport, event, shape_idx):
 
 func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_drag:
-		global_position = get_global_mouse_position()
+		global_position = get_global_mouse_position() - click_offset
 
 export (int, 0, 200) var push = 100
 
