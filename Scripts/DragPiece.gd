@@ -9,8 +9,9 @@ const PIECE_SIZE = 100.0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export var puzzle_pos = Vector2(0,0)
-export var puzzle_size = Vector2(1,1)
+
+onready var puzzle_pos = get_parent().puzzle_pos
+onready var puzzle_size = get_parent().puzzle_size
 
 func attach_to_player(player):
 	for child in get_children():
