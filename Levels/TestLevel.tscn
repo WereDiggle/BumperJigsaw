@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/DoublePiece.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/BoardWall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/checkered_background.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/CameraController.gd" type="Script" id=4]
 
 [node name="Node2D" type="Node2D"]
 __meta__ = {
@@ -10,19 +11,23 @@ __meta__ = {
 }
 
 [node name="CheckeredBackground" type="Sprite" parent="."]
-position = Vector2( 546, 318 )
+position = Vector2( -51.5012, 68.4988 )
 scale = Vector2( 1.46989, 1.46989 )
 z_index = -99
 texture = ExtResource( 3 )
 
 [node name="Piece2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 816, 263 )
+position = Vector2( 218.499, 13.4988 )
 
 [node name="Piece3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 545, 265 )
+position = Vector2( -52.5012, 15.4988 )
 
 [node name="Piece" parent="." instance=ExtResource( 1 )]
-position = Vector2( 229, 225 )
+position = Vector2( -368.501, -24.5012 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 467.692, 79 )
+position = Vector2( -129.809, -170.501 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 4 )
