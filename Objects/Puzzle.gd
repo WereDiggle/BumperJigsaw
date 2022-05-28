@@ -18,10 +18,15 @@ func rand_vector():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var spawn_positions = range(puzzle_width*puzzle_height)
+	spawn_positions.shuffle()
 	for h in puzzle_height:
 		for w in puzzle_width:
 			var piece_group = PieceGroup.instance().init(Vector2(w, h), Vector2(puzzle_width, puzzle_height), image)
-			piece_group.position = Vector2(w, h) * spawn_distance + rand_vector() * spawn_jiggle
+			var spawn_pos = spawn_positions[h*puzzle_width + w]
+			var spawn_h = spawn_pos / puzzle_width 
+			var spawn_w = spawn_pos % puzzle_width
+			piece_group.position = Vector2(spawn_w, spawn_h) * spawn_distance + rand_vector() * spawn_jiggle
 			add_child(piece_group)
 
 	pass # Replace with function body.
