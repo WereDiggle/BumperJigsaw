@@ -15,6 +15,7 @@ func _ready():
 	for h in puzzle_height:
 		for w in puzzle_width:
 			var piece_group = PieceGroup.instance().init(Vector2(w, h), Vector2(puzzle_width, puzzle_height), image)
+			piece_group.position = Vector2(w, h) * 150
 			add_child(piece_group)
 
 	pass # Replace with function body.
