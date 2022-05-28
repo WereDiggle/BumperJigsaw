@@ -27,6 +27,7 @@ func _ready():
 			var spawn_h = spawn_pos / puzzle_width 
 			var spawn_w = spawn_pos % puzzle_width
 			piece_group.position = Vector2(spawn_w, spawn_h) * spawn_distance + rand_vector() * spawn_jiggle
+			piece_group.rotation = rand_range(0, 360)
 			add_child(piece_group)
 
 	pass # Replace with function body.
