@@ -1,32 +1,34 @@
 extends Area2D
 
 const DragPiece = preload("res://Scripts/DragPiece.gd")
+const PieceHitbox = preload("res://Objects/PieceHitbox.gd")
 var PieceFeeler = get_script()
 
 export var feeler_direction = Vector2(0,0) 
 
 onready var piece = get_parent()
-onready var puzzle_pos = get_parent().get_parent().puzzle_pos
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
 func is_twin(other):
-	return puzzle_pos + feeler_direction == other.puzzle_pos && other.puzzle_pos + other.feeler_direction == puzzle_pos
+	return piece.puzzle_pos + feeler_direction == other.piece.puzzle_pos \
+		&& other.piece.puzzle_pos + other.feeler_direction == piece.puzzle_pos
 
 func _on_area_entered(area):
-	if  area is PieceFeeler and area.get_parent() is DragPiece and area.is_twin(self):
-		print(area)
-		piece.attach(area.get_parent())
+	if area is PieceFeeler and area.get_parent() is PieceHitbox and area.is_twin(self):
+		var other_group = area.get_parent().get_parent().get_parent()
+		var this_group = get_parent().get_parent().get_parent()
+		if other_group != this_group:
+			if other_group.is_drag():
+				other_group.merge(this_group)
+			else:
+				this_group.merge(other_group)
+
+		# Remove feelers now they are joined together
 		area.queue_free()
 		queue_free()
-
-func _on_body_entered(node):
-	pass
-	#if node is Player:
-	#	print(node)
-	#	piece.attach_to_player(node)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

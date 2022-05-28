@@ -52,7 +52,6 @@ var click_offset = Vector2(0, 0)
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and not event.pressed:
-		print_debug("making rigid")
 		make_rigid()
 		can_drag = false
 
