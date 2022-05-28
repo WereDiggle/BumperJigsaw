@@ -1,7 +1,5 @@
 extends Node2D
 
-const shader = preload("res://Materials/Piece.shader")
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -25,11 +23,13 @@ func merge(other):
 		child.position = (child.puzzle_pos - puzzle_pos) * PIECE_SIZE
 		this_parent.add_child(child)
 
+func init(pos, size, image):
+	puzzle_pos = pos
+	puzzle_size = size
+	$piece/hitbox.init(pos, size, image)
+	return self
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("piece").get_node("hitbox").init(puzzle_pos, puzzle_size, shader)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	#get_node("piece").get_node("hitbox").init(puzzle_pos, puzzle_size, image)
+	pass
