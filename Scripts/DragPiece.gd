@@ -55,20 +55,24 @@ func _input_event(viewport, event, shape_idx):
 		make_rigid()
 		can_drag = false
 
+export var max_speed = 1000
+var velocity = Vector2(0, 0)
+
 func _process(delta):
-	if Input.is_mouse_button_pressed(BUTTON_LEFT) and can_drag:
-		global_position = get_global_mouse_position() - click_offset
+	if can_drag:
+		if Input.is_mouse_button_pressed(BUTTON_LEFT):
+			#global_position = get_global_mouse_position() - click_offset
+			velocity = get_global_mouse_position() - (global_position + click_offset)
+		else:
+			make_rigid()
+			can_drag = false
 
 export (int, 0, 200) var push = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var direction = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).clamped(1)
-	if click_loc != null:
-		direction = (get_viewport().get_mouse_position() - click_loc).clamped(1)
 
-	#move_and_slide(direction)
+	move_and_slide(velocity)
 
 	# after calling move_and_slide()
 	for index in get_slide_count():
