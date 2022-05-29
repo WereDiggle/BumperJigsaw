@@ -55,7 +55,9 @@ func _input_event(viewport, event, shape_idx):
 		make_rigid()
 		can_drag = false
 
-export var max_speed = 1000
+export var max_speed = 5000
+export var speed_factor = 10
+export var deadzone = 1
 var velocity = Vector2(0, 0)
 
 func _process(delta):
@@ -63,6 +65,12 @@ func _process(delta):
 		if Input.is_mouse_button_pressed(BUTTON_LEFT):
 			#global_position = get_global_mouse_position() - click_offset
 			velocity = get_global_mouse_position() - (global_position + click_offset)
+			var direction = velocity.normalized()
+			var magnitude = velocity.length()
+			if magnitude < 1:
+				magnitude = 0
+			var speed = min(speed_factor * magnitude, max_speed)
+			velocity = direction * speed
 		else:
 			make_rigid()
 			can_drag = false
