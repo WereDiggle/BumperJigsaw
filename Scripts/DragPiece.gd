@@ -60,10 +60,16 @@ export var speed_factor = 10
 export var deadzone = 1
 var velocity = Vector2(0, 0)
 
+var rotate_deadzone = PI/45 # 2 degrees
+var rotate_max_speed = 100
+var rotate_offset = 0
+var rotate_speed_factor = PI
+var rotate_velocity = 0
+
 func _process(delta):
 	if can_drag:
 		if Input.is_mouse_button_pressed(BUTTON_LEFT):
-			#global_position = get_global_mouse_position() - click_offset
+			# Handle positional movement
 			velocity = get_global_mouse_position() - (global_position + click_offset)
 			var direction = velocity.normalized()
 			var magnitude = velocity.length()
@@ -71,9 +77,29 @@ func _process(delta):
 				magnitude = 0
 			var speed = min(speed_factor * magnitude, max_speed)
 			velocity = direction * speed
+
+			# Handle rotation
+			#var initial_rotation = 
+			var direction_from_center = get_global_mouse_position() - global_position
+			var cur_rotation = click_offset.rotated(rotation - rotate_offset)
+			var angle_diff
+			if direction_from_center.length() > 0.1:
+				angle_diff = cur_rotation.angle_to(direction_from_center)
+			else:
+				angle_diff = 0
+			print(direction_from_center)
+			print(cur_rotation)
+			print(angle_diff)
+			if abs(angle_diff) < rotate_deadzone:
+				angle_diff = 0
+			rotate_velocity = min(angle_diff, rotate_max_speed) * rotate_speed_factor
+
 		else:
 			make_rigid()
 			can_drag = false
+	else:
+		rotate_velocity = 0
+		velocity = Vector2.ZERO
 
 export (int, 0, 200) var push = 100
 
@@ -81,6 +107,7 @@ export (int, 0, 200) var push = 100
 func _physics_process(delta):
 
 	move_and_slide(velocity)
+	rotation += delta * rotate_velocity
 
 	# after calling move_and_slide()
 	for index in get_slide_count():
