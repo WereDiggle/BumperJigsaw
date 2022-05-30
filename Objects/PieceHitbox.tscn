@@ -44,3 +44,8 @@ feeler_direction = Vector2( 1, 0 )
 [node name="bot_feeler" parent="." instance=ExtResource( 1 )]
 rotation = 4.71239
 feeler_direction = Vector2( 0, 1 )
+
+[connection signal="area_entered" from="left_feeler" to="left_feeler" method="on_area_entered"]
+[connection signal="area_entered" from="top_feeler" to="top_feeler" method="on_area_entered"]
+[connection signal="area_entered" from="right_feeler" to="right_feeler" method="on_area_entered"]
+[connection signal="area_entered" from="bot_feeler" to="bot_feeler" method="on_area_entered"]

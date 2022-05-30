@@ -16,7 +16,7 @@ func is_twin(other):
 	return piece.puzzle_pos + feeler_direction == other.piece.puzzle_pos \
 		&& other.piece.puzzle_pos + other.feeler_direction == piece.puzzle_pos
 
-func _on_area_entered(area):
+func on_area_entered(area):
 	if area is PieceFeeler and area.get_parent() is PieceHitbox and area.is_twin(self):
 		var other_group = area.get_parent().get_parent().get_parent()
 		var this_group = get_parent().get_parent().get_parent()
