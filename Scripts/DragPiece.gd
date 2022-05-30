@@ -63,35 +63,28 @@ var velocity = Vector2(0, 0)
 var rotate_deadzone = deg2rad(10) # 10 deg
 var rotate_max_speed = 100
 var rotate_offset = 0
-var rotate_speed_factor = 2*PI
+var rotate_speed_factor = 4*PI
 var rotate_velocity = 0
 
-func _process(delta):
+export (int, 0, 200) var push = 100
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+
 	if can_drag:
 		if Input.is_mouse_button_pressed(BUTTON_LEFT):
 			# Handle positional movement
-			var vector_from_center = get_global_mouse_position() - global_position
-			var vector_from_click = get_global_mouse_position() - (global_position + click_offset)
 
-			# no velocity if facing the opposite direction
-			var speed = min(max_speed, speed_factor * vector_from_click.length())
-			if vector_from_center.length() < click_offset.length():
-				speed = 0
-			velocity = vector_from_center.normalized() * speed
+			global_position = get_global_mouse_position() - click_offset
 
-			# NOTE: changes to velocity moves from object center position, not click offset
-
+		elif Input.is_mouse_button_pressed(BUTTON_RIGHT):
 			# Handle rotation
-			#var initial_rotation = 
+			var vector_from_center = get_global_mouse_position() - global_position
 			var cur_rotation = click_offset.rotated(rotation - rotate_offset)
 			var angle_diff = cur_rotation.angle_to(vector_from_center)
 			if vector_from_center.length() < click_offset.length():
 				angle_diff = 0
-			rotate_velocity = min(angle_diff, rotate_max_speed) * rotate_speed_factor
-
-			# Don't rotate if
-			# 1. not enough rotational difference
-			# 2. not enough translational difference
+			rotation += min(angle_diff, rotate_max_speed) * rotate_speed_factor * delta
 
 		else:
 			make_rigid()
@@ -99,20 +92,6 @@ func _process(delta):
 	else:
 		rotate_velocity = 0
 		velocity = Vector2.ZERO
-
-export (int, 0, 200) var push = 100
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-
-	#if abs(rotate_velocity) > 0:
-	#	rotation += delta * rotate_velocity
-	#else:
-	#	move_and_slide(velocity)
-	if click_offset.length() > 30:
-		rotation += delta * rotate_velocity
-	else:
-		move_and_slide(velocity)
 
 	# after calling move_and_slide()
 	for index in get_slide_count():
