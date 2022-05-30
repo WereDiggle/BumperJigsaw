@@ -56,7 +56,7 @@ func _input_event(viewport, event, shape_idx):
 		can_drag = false
 
 export var max_speed = 5000
-export var speed_factor = 10
+export var speed_factor = 20
 export var deadzone = 10
 var velocity = Vector2(0, 0)
 
@@ -109,8 +109,10 @@ func _physics_process(delta):
 	#	rotation += delta * rotate_velocity
 	#else:
 	#	move_and_slide(velocity)
-	rotation += delta * rotate_velocity
-	move_and_slide(velocity)
+	if click_offset.length() > 30:
+		rotation += delta * rotate_velocity
+	else:
+		move_and_slide(velocity)
 
 	# after calling move_and_slide()
 	for index in get_slide_count():
