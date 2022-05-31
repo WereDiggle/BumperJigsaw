@@ -22,9 +22,9 @@ func on_area_entered(area):
 		var this_group = get_parent().get_parent().get_parent()
 		if other_group != this_group:
 			if other_group.is_drag():
-				other_group.merge(this_group)
-			else:
 				this_group.merge(other_group)
+			else:
+				other_group.merge(this_group)
 
 		# Remove feelers now they are joined together
 		area.queue_free()
