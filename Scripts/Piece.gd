@@ -3,14 +3,6 @@ extends RigidBody2D
 onready var collision_shape = get_node("collision_shape")
 onready var drag_double = get_parent().get_node("drag_piece")
 
-const PIECE_SIZE = 100.0
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-onready var puzzle_pos = get_parent().puzzle_pos
-onready var puzzle_size = get_parent().puzzle_size
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
