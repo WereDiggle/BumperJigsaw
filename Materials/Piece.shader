@@ -10,12 +10,15 @@ uniform vec2 right = vec2(0.9, 0.5);
 uniform vec2 bot = vec2(0.5, 0.9);
 
 uniform vec4 tab_facing = vec4(0.0, 0.0, 0.0, 0.0);
-uniform vec4 tab_size = vec4(0.1, 0.0, 0.0, 0.1);
+uniform vec4 tab_size = vec4(0.1, 0.1, 0.1, 0.1);
 
 uniform float margin_size = 0.15;
 
 void fragment() {
-	vec2 uv = UV * puzzle_ratio + puzzle_pos * puzzle_ratio;
+	// somehow use margin var here 
+	vec2 adjusted_ratio = puzzle_ratio * (1.0/(1.0-2.0*margin_size));
+	vec2 adjusted_offset = puzzle_ratio * puzzle_pos - adjusted_ratio * margin_size;
+	vec2 uv = UV * adjusted_ratio + adjusted_offset; // UV without margins
 	vec4 color = texture(TEXTURE, uv);
 
 	if (UV[0] < margin_size) {

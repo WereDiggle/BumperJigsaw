@@ -18,7 +18,7 @@ shader_param/left = Vector2( 0.1, 0.5 )
 shader_param/right = Vector2( 0.9, 0.5 )
 shader_param/bot = Vector2( 0.5, 0.9 )
 shader_param/tab_facing = Plane( 0, 0, 0, 0 )
-shader_param/tab_size = Plane( -0.15, 0, 0, 0.15 )
+shader_param/tab_size = Plane( 0.1, 0.1, 0.1, 0.1 )
 shader_param/margin_size = 0.15
 
 [sub_resource type="StreamTexture" id=3]
@@ -35,6 +35,7 @@ __meta__ = {
 [node name="image" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
 position = Vector2( -0.0849609, 0.100067 )
+scale = Vector2( 0.111, 0.142 )
 texture = SubResource( 3 )
 
 [node name="left_feeler" parent="." instance=ExtResource( 1 )]
