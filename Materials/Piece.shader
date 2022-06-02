@@ -43,7 +43,8 @@ void fragment() {
 		if (length(left - UV) < tab_size[0]) {
 			color.a = 1.0;
 		}
-	} else {
+	} 
+	if (tab_facing[0] <= -1.0) {
 		if (length(left2 - UV) < tab_size[0]) {
 			color.a = 0.0;
 		}
@@ -53,7 +54,8 @@ void fragment() {
 		if (length(top - UV) < tab_size[1]) {
 			color.a = 1.0;
 		}
-	} else {
+	} 
+	if (tab_facing[1] <= -1.0) {
 		if (length(top2 - UV) < tab_size[1]) {
 			color.a = 0.0;
 		}
@@ -63,7 +65,8 @@ void fragment() {
 		if (length(right - UV) < tab_size[2]) {
 			color.a = 1.0;
 		}
-	} else {
+	}
+	if (tab_facing[2] <= -1.0) {
 		if (length(right2 - UV) < tab_size[2]) {
 			color.a = 0.0;
 		}
@@ -73,7 +76,8 @@ void fragment() {
 		if (length(bot - UV) < tab_size[3]) {
 			color.a = 1.0;
 		}
-	} else {
+	}
+	if (tab_facing[3] <= -1.0) {
 		if (length(bot2 - UV) < tab_size[3]) {
 			color.a = 0.0;
 		}

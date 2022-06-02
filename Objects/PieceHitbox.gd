@@ -13,6 +13,20 @@ func init(pos, size, image):
 	mat.set_shader(shader)
 	mat.set_shader_param("puzzle_pos", puzzle_pos)
 	mat.set_shader_param("puzzle_ratio", puzzle_ratio)
+
+	# left
+	var tab_facing = Color(-1,-1,1,1)
+
+	if puzzle_pos.x == 0:
+		tab_facing.r = 0
+	if puzzle_pos.x == puzzle_size.x-1:
+		tab_facing.b = 0
+	if puzzle_pos.y == 0:
+		tab_facing.g = 0
+	if puzzle_pos.y == puzzle_size.y-1:
+		tab_facing.a = 0
+	mat.set_shader_param("tab_facing", tab_facing)
+
 	$image.set_material(mat)
 	$image.texture = image
 	return self
