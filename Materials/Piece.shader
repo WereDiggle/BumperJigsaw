@@ -9,7 +9,12 @@ uniform vec2 left = vec2(0.1, 0.5);
 uniform vec2 right = vec2(0.9, 0.5);
 uniform vec2 bot = vec2(0.5, 0.9);
 
-uniform vec4 tab_facing = vec4(0.0, 0.0, 0.0, 0.0);
+uniform vec2 left2 = vec2(0.2, 0.5);
+uniform vec2 top2 = vec2(0.5, 0.2);
+uniform vec2 right2 = vec2(0.8, 0.5);
+uniform vec2 bot2 = vec2(0.5, 0.8);
+
+uniform vec4 tab_facing = vec4(-1.0, -1.0, 1.0, 1.0);
 uniform vec4 tab_size = vec4(0.1, 0.1, 0.1, 0.1);
 
 uniform float margin_size = 0.15;
@@ -34,18 +39,46 @@ void fragment() {
 		color.a = 0.0;
 	}
 
-	if (length(top - UV) < tab_size[0]) {
-		color.a = 1.0;
+	if (tab_facing[0] >= 1.0) {
+		if (length(left - UV) < tab_size[0]) {
+			color.a = 1.0;
+		}
+	} else {
+		if (length(left2 - UV) < tab_size[0]) {
+			color.a = 0.0;
+		}
 	}
-	if (length(left - UV) < tab_size[1]) {
-		color.a = 1.0;
+
+	if (tab_facing[1] >= 1.0) {
+		if (length(top - UV) < tab_size[1]) {
+			color.a = 1.0;
+		}
+	} else {
+		if (length(top2 - UV) < tab_size[1]) {
+			color.a = 0.0;
+		}
 	}
-	if (length(right - UV) < tab_size[2]) {
-		color.a = 1.0;
+
+	if (tab_facing[2] >= 1.0) {
+		if (length(right - UV) < tab_size[2]) {
+			color.a = 1.0;
+		}
+	} else {
+		if (length(right2 - UV) < tab_size[2]) {
+			color.a = 0.0;
+		}
 	}
-	if (length(bot - UV) < tab_size[3]) {
-		color.a = 1.0;
+
+	if (tab_facing[3] >= 1.0) {
+		if (length(bot - UV) < tab_size[3]) {
+			color.a = 1.0;
+		}
+	} else {
+		if (length(bot2 - UV) < tab_size[3]) {
+			color.a = 0.0;
+		}
 	}
+
 	// we want to change the alpha of a region
 	COLOR = color;
 }
