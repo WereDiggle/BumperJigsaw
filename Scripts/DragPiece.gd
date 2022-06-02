@@ -82,8 +82,6 @@ func _physics_process(delta):
 			var vector_from_center = get_global_mouse_position() - global_position
 			var cur_rotation = click_offset.rotated(rotation - rotate_offset)
 			var angle_diff = cur_rotation.angle_to(vector_from_center)
-			if vector_from_center.length() < click_offset.length():
-				angle_diff = 0
 			rotation += min(angle_diff, rotate_max_speed) * rotate_speed_factor * delta
 
 		else:
