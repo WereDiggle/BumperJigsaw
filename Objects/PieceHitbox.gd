@@ -14,9 +14,7 @@ func init(pos, size, image):
 	mat.set_shader_param("puzzle_pos", puzzle_pos)
 	mat.set_shader_param("puzzle_ratio", puzzle_ratio)
 
-	# left
 	var tab_facing = Color(-1,-1,1,1)
-
 	if puzzle_pos.x == 0:
 		tab_facing.r = 0
 	if puzzle_pos.x == puzzle_size.x-1:
@@ -26,9 +24,15 @@ func init(pos, size, image):
 	if puzzle_pos.y == puzzle_size.y-1:
 		tab_facing.a = 0
 	mat.set_shader_param("tab_facing", tab_facing)
-
 	$image.set_material(mat)
-	$image.texture = image
+
+	print(image.get_size())
+	var s = image.get_size() #image size
+	var margin = 0.15;
+	var target_width = 100/(1-2*margin)
+	var scale = Vector2(target_width/s.x, target_width/s.y)
+	$image.set_texture(image)
+	$image.scale = scale
 	return self
 
 # Called when the node enters the scene tree for the first time.

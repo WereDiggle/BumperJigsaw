@@ -1,8 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Objects/Puzzle.gd" type="Script" id=1]
-[ext_resource path="res://Assets/starry_night_full.jpg" type="Texture" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/test_pattern.png-b99ad5e5d421f8b1f2d22891d33835e2.stex"
 
 [node name="Puzzle" type="Node2D"]
 script = ExtResource( 1 )
-image = ExtResource( 2 )
+image = SubResource( 1 )

@@ -6,7 +6,7 @@
 [ext_resource path="res://Objects/PieceHitbox.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 49.9844, 50.1431 )
+extents = Vector2( 50, 50 )
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -38,9 +38,10 @@ __meta__ = {
 
 [node name="image" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
-position = Vector2( -0.0849609, 0.100067 )
+position = Vector2( 0, 0 )
 scale = Vector2( 0.111, 0.142 )
 texture = SubResource( 3 )
+region_rect = Rect2( 100, 100, 100, 0 )
 
 [node name="left_feeler" parent="." instance=ExtResource( 1 )]
 rotation = 0.0
