@@ -26,7 +26,6 @@ func init(pos, size, image):
 	mat.set_shader_param("tab_facing", tab_facing)
 	$image.set_material(mat)
 
-	print(image.get_size())
 	var s = image.get_size() #image size
 	var margin = 0.15;
 	var target_width = 100/(1-2*margin)

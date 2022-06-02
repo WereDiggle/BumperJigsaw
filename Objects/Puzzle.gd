@@ -29,9 +29,15 @@ func _ready():
 			piece_group.position = Vector2(spawn_w, spawn_h) * spawn_distance + rand_vector() * spawn_jiggle
 			#piece_group.rotation = rand_range(0, 360)
 			add_child(piece_group)
+	
+	for node in get_tree().get_nodes_in_group("PieceFeelers"):
+		print(node)
+		node.connect("piece_snap", self, "play_snap")
 
 	pass # Replace with function body.
 
+func play_snap():
+	$SnapSound.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -12,12 +12,15 @@ onready var piece = get_parent()
 # var a = 2
 # var b = "text"
 
+signal piece_snap
+
 func is_twin(other):
 	return piece.puzzle_pos + feeler_direction == other.piece.puzzle_pos \
 		&& other.piece.puzzle_pos + other.feeler_direction == piece.puzzle_pos
 
 func on_area_entered(area):
 	if area is PieceFeeler and area.get_parent() is PieceHitbox and area.is_twin(self):
+		emit_signal("piece_snap")
 		var other_group = area.get_parent().get_parent().get_parent()
 		var this_group = get_parent().get_parent().get_parent()
 		if other_group != this_group:
@@ -32,6 +35,7 @@ func on_area_entered(area):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	add_to_group("PieceFeelers")
 	pass # Replace with function body.
 
 

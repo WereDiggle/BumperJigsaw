@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Objects/Puzzle.gd" type="Script" id=1]
+[ext_resource path="res://Assets/snap.wav" type="AudioStream" id=2]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -9,3 +10,6 @@ load_path = "res://.import/cat_thinking.jpg-476a52d6915a3db143082b0e92bd4517.ste
 [node name="Puzzle" type="Node2D"]
 script = ExtResource( 1 )
 image = SubResource( 1 )
+
+[node name="SnapSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
