@@ -11,15 +11,16 @@ __meta__ = {
 }
 
 [node name="CheckeredBackground" type="Sprite" parent="."]
-position = Vector2( -74, 187 )
+position = Vector2( 340.499, 399.499 )
 scale = Vector2( 1.46989, 1.46989 )
 z_index = -99
 texture = ExtResource( 3 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( -129.809, -170.501 )
+position = Vector2( 284.69, 41.9978 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 414.499, 212.499 )
 
 [node name="Puzzle" parent="." instance=ExtResource( 1 )]
 puzzle_width = 3
