@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-onready var collision_shape = get_node("collision_shape")
 onready var drag_double = get_parent().get_node("drag_piece")
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +12,8 @@ func _input_event(viewport, event, shape_idx):
 		for child in get_children():
 			remove_child(child)
 			drag_double.add_child(child)
+		# Even when teleporting, the physics engine seems to interpolate path you take
+		# which moves objects along the path
 		drag_double.transform = transform
 		drag_double.can_drag = true
 		drag_double.click_offset = get_global_mouse_position() - global_position
@@ -21,6 +22,10 @@ func _input_event(viewport, event, shape_idx):
 		angular_velocity = 0
 		applied_force = Vector2(0,0)
 		applied_torque = 0 
+
+func _physics_process(delta):
+	if not drag_double.can_drag:
+		drag_double.transform = transform
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

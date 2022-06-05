@@ -31,7 +31,6 @@ func _ready():
 			add_child(piece_group)
 	
 	for node in get_tree().get_nodes_in_group("PieceFeelers"):
-		print(node)
 		node.connect("piece_snap", self, "play_snap")
 
 	pass # Replace with function body.
