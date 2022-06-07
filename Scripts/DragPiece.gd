@@ -70,16 +70,19 @@ const double_click_dur = 1000
 var last_click_time = 0
 
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		var cur_time = OS.get_ticks_msec()
-		if cur_time - rigid_double.last_click_time < rigid_double.double_click_dur:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == BUTTON_LEFT:
+			var cur_time = OS.get_ticks_msec()
+			if cur_time - rigid_double.last_click_time < rigid_double.double_click_dur:
+				can_drag = "rotate"
+			rigid_double.last_click_time = cur_time 
+		elif event.button_index == BUTTON_RIGHT:
 			can_drag = "rotate"
-		rigid_double.last_click_time = cur_time 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 
-	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(BUTTON_LEFT) or Input.is_mouse_button_pressed(BUTTON_RIGHT):
 		if can_drag == "translate":
 			global_position = get_global_mouse_position() - click_offset
 		elif can_drag == "rotate":

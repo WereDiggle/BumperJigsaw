@@ -10,13 +10,17 @@ const double_click_dur = 1000
 var last_click_time = 0
 
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		var cur_time = OS.get_ticks_msec()
-		if cur_time - last_click_time < double_click_dur:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == BUTTON_LEFT:
+			var cur_time = OS.get_ticks_msec()
+			if cur_time - last_click_time < double_click_dur:
+				drag_double.can_drag = "rotate"
+			else:
+				drag_double.can_drag = "translate"
+			last_click_time = cur_time 
+		elif event.button_index == BUTTON_RIGHT: 
 			drag_double.can_drag = "rotate"
-		else:
-			drag_double.can_drag = "translate"
-		last_click_time = cur_time 
+
 		# Make the piece able to drag
 		for child in get_children():
 			remove_child(child)
