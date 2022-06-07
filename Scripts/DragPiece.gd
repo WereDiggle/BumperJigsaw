@@ -47,13 +47,11 @@ func make_rigid():
 		rigid_double.add_child(child)
 	rigid_double.transform = transform
 
-var can_drag = false;
+var can_drag = "";
 var click_offset = Vector2(0, 0)
 
-func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and not event.pressed:
-		make_rigid()
-		can_drag = false
+#func _input_event(viewport, event, shape_idx):
+#	pass
 
 export var max_speed = 5000
 export var speed_factor = 20
@@ -68,28 +66,30 @@ var rotate_velocity = 0
 
 export (int, 0, 200) var push = 100
 
+const double_click_dur = 1000
+var last_click_time = 0
+
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		var cur_time = OS.get_ticks_msec()
+		if cur_time - rigid_double.last_click_time < rigid_double.double_click_dur:
+			can_drag = "rotate"
+		rigid_double.last_click_time = cur_time 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 
-	if can_drag:
-		if Input.is_mouse_button_pressed(BUTTON_LEFT):
-			# Handle positional movement
-
+	if Input.is_mouse_button_pressed(BUTTON_LEFT):
+		if can_drag == "translate":
 			global_position = get_global_mouse_position() - click_offset
-
-		elif Input.is_mouse_button_pressed(BUTTON_RIGHT):
-			# Handle rotation
+		elif can_drag == "rotate":
 			var vector_from_center = get_global_mouse_position() - global_position
 			var cur_rotation = click_offset.rotated(rotation - rotate_offset)
 			var angle_diff = cur_rotation.angle_to(vector_from_center)
 			rotation += min(angle_diff, rotate_max_speed) * rotate_speed_factor * delta
-
-		else:
-			make_rigid()
-			can_drag = false
 	else:
-		rotate_velocity = 0
-		velocity = Vector2.ZERO
+		make_rigid()
+		can_drag = ""
 
 	# after calling move_and_slide()
 	#for index in get_slide_count():
