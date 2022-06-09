@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/LevelSelectButton.gd" type="Script" id=1]
+
+[node name="TextureButton" type="TextureButton"]
+margin_left = 231.0
+margin_top = 135.0
+margin_right = 470.0
+margin_bottom = 447.0
+rect_min_size = Vector2( 20, 29 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+script = ExtResource( 1 )
+target_path = "res://Levels/TestLevel.tscn"
+
+[connection signal="pressed" from="." to="." method="transition_to_scene"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

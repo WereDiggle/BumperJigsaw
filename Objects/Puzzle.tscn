@@ -5,7 +5,7 @@
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
-load_path = "res://.import/cat_butt.jpg-b267b5902b307b3b1e92cd86a37160aa.stex"
+load_path = "res://.import/cat_thinking.jpg-476a52d6915a3db143082b0e92bd4517.stex"
 
 [node name="Puzzle" type="Node2D"]
 script = ExtResource( 1 )
