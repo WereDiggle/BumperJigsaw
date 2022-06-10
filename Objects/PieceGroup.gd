@@ -13,6 +13,8 @@ const PIECE_SIZE = 100.0
 func is_drag():
 	return get_node("piece").get_child_count() == 0
 
+var num_pieces = 1
+
 # merges other PieceGroup into this one
 func merge(other):
 	var other_parent = other.get_node("drag_piece") if other.is_drag() else other.get_node("piece")
@@ -22,6 +24,8 @@ func merge(other):
 		other_parent.remove_child(child)
 		child.position = (child.puzzle_pos - puzzle_pos) * PIECE_SIZE
 		this_parent.add_child(child)
+	
+	num_pieces += other.num_pieces
 
 func init(args):
 	puzzle_pos = args.pos
