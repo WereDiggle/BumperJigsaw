@@ -32,12 +32,20 @@ func _ready():
 		var h = i / puzzle_width 
 		var w = i % puzzle_width
 		var facing = Color(rand_facing(), rand_facing(), rand_facing(), rand_facing())
+		var tab_size = Color(0.075, 0.075, 0.1, 0.1)
 		if w > 0:
 			facing.r = -piece_facings[i-1].b
 		if h > 0:
 			facing.g = -piece_facings[i-puzzle_width].a
 		piece_facings.append(facing)
-		var piece_group = PieceGroup.instance().init(Vector2(w, h), Vector2(puzzle_width, puzzle_height), image, facing)
+		var piece_args = {
+			pos = Vector2(w, h),	
+			size = Vector2(puzzle_width, puzzle_height),
+			image = image,
+			tab_facing = facing,
+			tab_size = tab_size,
+		}
+		var piece_group = PieceGroup.instance().init(piece_args)
 		var spawn_pos = spawn_positions[i]
 		var spawn_h = spawn_pos / puzzle_width 
 		var spawn_w = spawn_pos % puzzle_width

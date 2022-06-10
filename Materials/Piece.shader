@@ -15,7 +15,7 @@ uniform vec2 right2 = vec2(0.8, 0.5);
 uniform vec2 bot2 = vec2(0.5, 0.8);
 
 uniform vec4 tab_facing = vec4(-1.0, -1.0, 1.0, 1.0);
-uniform vec4 tab_size = vec4(0.1, 0.1, 0.1, 0.1);
+uniform vec4 tab_size = vec4(0.15, 0.1, 0.1, 0.1);
 
 uniform float margin_size = 0.15;
 
