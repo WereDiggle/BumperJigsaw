@@ -42,7 +42,7 @@ func merge(other):
 		child.position -= reposition_offset
 	# reposition
 	this_parent.position += reposition_offset.rotated(this_parent.rotation)
-	$drag_piece.click_offset -= reposition_offset
+	$drag_piece.click_offset -= reposition_offset.rotated(this_parent.rotation)
 	#for child in my_children:
 	#	this_parent.add_child(child)
 	
