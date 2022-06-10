@@ -22,7 +22,7 @@ func rand_facing():
 	return (randi() % 2) * 2 - 1
 
 func rand_tab_size():
-	return (randi() % 3) * 0.025 + 0.05
+	return (randi() % 2) * 0.025 + 0.075
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,7 +37,6 @@ func _ready():
 		var w = i % puzzle_width
 		var facing = Color(rand_facing(), rand_facing(), rand_facing(), rand_facing())
 		var tab_size = Color(rand_tab_size(), rand_tab_size(), rand_tab_size(), rand_tab_size())
-		print(tab_size)
 		if w > 0:
 			facing.r = -piece_facings[i-1].b
 			tab_size.r = piece_tab_sizes[i-1].b
