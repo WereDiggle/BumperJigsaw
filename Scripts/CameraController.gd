@@ -18,8 +18,8 @@ func _process(delta):
 
 	var direction = Vector2(Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")).clamped(1)
-	position += direction * speed * delta 
+	position += direction * speed * delta * zoom
 
 	var zoom_direction = Input.get_action_strength("rotate_left") - Input.get_action_strength("rotate_right")
-	zoom += Vector2(1,1) * zoom_direction * zoom_speed * delta
+	zoom *= Vector2(1,1) + Vector2(1,1) * (zoom_direction * zoom_speed * delta)
 	pass
