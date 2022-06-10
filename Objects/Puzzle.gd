@@ -21,10 +21,14 @@ func rand_vector():
 func rand_facing():
 	return (randi() % 2) * 2 - 1
 
+func rand_tab_size():
+	return (randi() % 3) * 0.025 + 0.05
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var spawn_positions = range(puzzle_width*puzzle_height)
 	var piece_facings = []
+	var piece_tab_sizes = []
 	if spawn_shuffle:
 		spawn_positions.shuffle()
 
@@ -32,12 +36,16 @@ func _ready():
 		var h = i / puzzle_width 
 		var w = i % puzzle_width
 		var facing = Color(rand_facing(), rand_facing(), rand_facing(), rand_facing())
-		var tab_size = Color(0.075, 0.075, 0.1, 0.1)
+		var tab_size = Color(rand_tab_size(), rand_tab_size(), rand_tab_size(), rand_tab_size())
+		print(tab_size)
 		if w > 0:
 			facing.r = -piece_facings[i-1].b
+			tab_size.r = piece_tab_sizes[i-1].b
 		if h > 0:
 			facing.g = -piece_facings[i-puzzle_width].a
+			tab_size.g = piece_tab_sizes[i-puzzle_width].a
 		piece_facings.append(facing)
+		piece_tab_sizes.append(tab_size)
 		var piece_args = {
 			pos = Vector2(w, h),	
 			size = Vector2(puzzle_width, puzzle_height),
