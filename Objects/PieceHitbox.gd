@@ -2,6 +2,7 @@ extends CollisionShape2D
 
 const shader = preload("res://Materials/Piece.shader")
 
+export var margin = 0.15
 var puzzle_pos
 var puzzle_size
 var tab_facing
@@ -27,10 +28,10 @@ func init(args):
 		tab_facing.a = 0
 	mat.set_shader_param("tab_facing", tab_facing)
 	mat.set_shader_param("tab_size", args.tab_size)
+	mat.set_shader_param("margin_size", margin)
 	$image.set_material(mat)
 
 	var s = args.image.get_size() #image size
-	var margin = 0.15;
 	var target_width = 100/(1-2*margin)
 	var scale = Vector2(target_width/s.x, target_width/s.y)
 	$image.set_texture(args.image)

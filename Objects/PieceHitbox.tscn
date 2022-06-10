@@ -13,17 +13,17 @@ shader = ExtResource( 2 )
 shader_param/blue = 1.0
 shader_param/puzzle_pos = Vector2( 0, 0 )
 shader_param/puzzle_ratio = Vector2( 1, 1 )
-shader_param/top = Vector2( 0.5, 0.1 )
-shader_param/left = Vector2( 0.1, 0.5 )
-shader_param/right = Vector2( 0.9, 0.5 )
-shader_param/bot = Vector2( 0.5, 0.9 )
-shader_param/left2 = Vector2( 0.2, 0.5 )
-shader_param/top2 = Vector2( 0.5, 0.2 )
-shader_param/right2 = Vector2( 0.8, 0.5 )
-shader_param/bot2 = Vector2( 0.5, 0.8 )
+shader_param/top = Vector2( 0.5, 0.2 )
+shader_param/left = Vector2( 0.2, 0.5 )
+shader_param/right = Vector2( 0.8, 0.5 )
+shader_param/bot = Vector2( 0.5, 0.8 )
+shader_param/left2 = Vector2( 0.3, 0.5 )
+shader_param/top2 = Vector2( 0.5, 0.3 )
+shader_param/right2 = Vector2( 0.7, 0.5 )
+shader_param/bot2 = Vector2( 0.5, 0.7 )
 shader_param/tab_facing = Plane( -1, -1, 1, 1 )
-shader_param/tab_size = Plane( 0.15, 0.1, 0.1, 0.1 )
-shader_param/margin_size = 0.15
+shader_param/tab_size = Plane( 0.1, 0.1, 0.1, 0.1 )
+shader_param/margin_size = 0.25
 
 [sub_resource type="StreamTexture" id=3]
 flags = 4
@@ -35,11 +35,12 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
+margin = 0.25
 
 [node name="image" parent="." instance=ExtResource( 3 )]
 material = SubResource( 1 )
 position = Vector2( 0, 0 )
-scale = Vector2( 0.111, 0.142 )
+scale = Vector2( 0.155, 0.197 )
 texture = SubResource( 3 )
 region_rect = Rect2( 100, 100, 100, 0 )
 
