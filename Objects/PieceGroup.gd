@@ -7,6 +7,7 @@ extends Node2D
 # This is what the PieceGroup's initial piece is, so use it as offset
 export var puzzle_pos = Vector2(0,0)
 export var puzzle_size = Vector2(1,1)
+export var mass = 0.2
 
 const PIECE_SIZE = 100.0
 
@@ -26,6 +27,7 @@ func merge(other):
 		this_parent.add_child(child)
 	
 	num_pieces += other.num_pieces
+	$piece.mass = mass * num_pieces
 
 func init(args):
 	puzzle_pos = args.pos
