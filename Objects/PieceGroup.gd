@@ -23,10 +23,10 @@ func merge(other):
 		child.position = (child.puzzle_pos - puzzle_pos) * PIECE_SIZE
 		this_parent.add_child(child)
 
-func init(pos, size, image):
+func init(pos, size, image, facing):
 	puzzle_pos = pos
 	puzzle_size = size
-	$piece/hitbox.init(pos, size, image)
+	$piece/hitbox.init(pos, size, image, facing)
 	return self
 
 # Called when the node enters the scene tree for the first time.

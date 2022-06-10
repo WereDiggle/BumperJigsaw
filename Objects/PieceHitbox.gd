@@ -4,8 +4,9 @@ const shader = preload("res://Materials/Piece.shader")
 
 var puzzle_pos
 var puzzle_size
+var tab_facing
 
-func init(pos, size, image):
+func init(pos, size, image, facing):
 	puzzle_pos = pos
 	puzzle_size = size
 	var puzzle_ratio = Vector2(1,1) / puzzle_size
@@ -14,7 +15,8 @@ func init(pos, size, image):
 	mat.set_shader_param("puzzle_pos", puzzle_pos)
 	mat.set_shader_param("puzzle_ratio", puzzle_ratio)
 
-	var tab_facing = Color(-1,-1,1,1)
+	#var tab_facing = Color(-1,-1,1,1)
+	tab_facing = facing
 	if puzzle_pos.x == 0:
 		tab_facing.r = 0
 	if puzzle_pos.x == puzzle_size.x-1:
