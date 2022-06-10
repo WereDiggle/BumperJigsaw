@@ -40,3 +40,4 @@ margin_top = 106.0
 margin_right = 939.0
 margin_bottom = 418.0
 texture_normal = ExtResource( 5 )
+target_path = "res://Levels/Ginny.tscn"

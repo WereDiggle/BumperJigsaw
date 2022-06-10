@@ -24,4 +24,3 @@ position = Vector2( 0, -2 )
 image = ExtResource( 2 )
 puzzle_width = 9
 puzzle_height = 10
-spawn_shuffle = false
