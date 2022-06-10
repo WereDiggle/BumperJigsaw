@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Objects/Puzzle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/ginny_1.jpg" type="Texture" id=2]
 [ext_resource path="res://Objects/CameraController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/trans_background_1.png" type="Texture" id=5]
 
@@ -20,8 +21,7 @@ zoom = Vector2( 2, 2 )
 
 [node name="Puzzle" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -2 )
-puzzle_width = 12
-puzzle_height = 16
-spawn_distance = 150
-spawn_jiggle = 0
+image = ExtResource( 2 )
+puzzle_width = 9
+puzzle_height = 10
 spawn_shuffle = false
